@@ -51,6 +51,31 @@ import static org.hibernate.type.SqlTypes.UUID;
 import static org.hibernate.type.SqlTypes.VARBINARY;
 import static org.hibernate.type.SqlTypes.XML_ARRAY;
 
+/**
+ * Aggregate column support implementation for SAP HANA database.
+ * <p>
+ * This class provides SAP HANA-specific support for handling aggregate data types
+ * such as JSON, XML, and structured types. It extends {@link AggregateSupportImpl}
+ * to provide database-specific implementations for aggregate operations.
+ * <p>
+ * HANA aggregate support includes:
+ * <ul>
+ *   <li>JSON column mapping and manipulation using HANA's native JSON functions</li>
+ *   <li>XML and XML_ARRAY type handling with SQLXML support</li>
+ *   <li>Structured data type operations</li>
+ *   <li>Path-based access to nested aggregate elements</li>
+ *   <li>UUID support within aggregates</li>
+ * </ul>
+ * <p>
+ * SAP HANA provides robust support for both JSON and XML aggregate types
+ * with comprehensive query capabilities.
+ *
+ * @see AggregateSupport
+ * @see AggregateSupportImpl
+ * @see HANADialect
+ *
+ * @author Hibernate Team
+ */
 public class HANAAggregateSupport extends AggregateSupportImpl {
 
 	private static final AggregateSupport INSTANCE = new HANAAggregateSupport();

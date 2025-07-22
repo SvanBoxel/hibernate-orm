@@ -29,6 +29,31 @@ import org.hibernate.type.spi.TypeConfiguration;
 import static org.hibernate.dialect.function.CastFunction.renderCastArrayToString;
 import static org.hibernate.query.sqm.produce.function.FunctionParameterType.STRING;
 
+/**
+ * A specialized concatenation function implementation that performs automatic
+ * casting of arguments before concatenation.
+ * <p>
+ * This function extends {@link AbstractSqmSelfRenderingFunctionDescriptor} to provide
+ * database-specific concatenation operations with automatic type casting capabilities.
+ * It is particularly useful for databases that require explicit casting of non-string
+ * types before concatenation operations.
+ * <p>
+ * Key features:
+ * <ul>
+ *   <li>Automatic casting of arguments to string types</li>
+ *   <li>Support for both operator-based and function-based concatenation</li>
+ *   <li>Configurable cast wrapper handling</li>
+ *   <li>Flexible argument rendering modes</li>
+ * </ul>
+ * <p>
+ * This is commonly used in dialects where implicit type conversion
+ * is not supported in concatenation operations.
+ *
+ * @see AbstractSqmSelfRenderingFunctionDescriptor
+ * @see ConcatFunction
+ *
+ * @author Hibernate Team
+ */
 public class CastingConcatFunction extends AbstractSqmSelfRenderingFunctionDescriptor {
 
 	private final Dialect dialect;

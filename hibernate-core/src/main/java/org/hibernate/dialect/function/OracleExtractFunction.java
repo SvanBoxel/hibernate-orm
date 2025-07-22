@@ -22,6 +22,31 @@ import java.util.List;
 import static org.hibernate.query.common.TemporalUnit.EPOCH;
 import static org.hibernate.type.spi.TypeConfiguration.getSqlTemporalType;
 
+/**
+ * Oracle-specific implementation of the EXTRACT function.
+ * <p>
+ * This class extends {@link ExtractFunction} to provide Oracle-specific
+ * handling of temporal unit extraction from date/time values. Oracle has
+ * unique behaviors and syntax requirements for certain extract operations.
+ * <p>
+ * Oracle-specific features:
+ * <ul>
+ *   <li>Special handling for EPOCH extraction</li>
+ *   <li>Oracle-specific temporal type handling</li>
+ *   <li>Proper casting and conversion for Oracle date/time types</li>
+ *   <li>Support for Oracle's unique temporal functions</li>
+ * </ul>
+ * <p>
+ * The implementation ensures that extract operations work correctly
+ * with Oracle's date and timestamp types while maintaining compatibility
+ * with the standard EXTRACT function interface.
+ *
+ * @see ExtractFunction
+ * @see OracleDialect
+ * @see TemporalUnit
+ *
+ * @author Hibernate Team
+ */
 public class OracleExtractFunction extends ExtractFunction {
 	public OracleExtractFunction(Dialect dialect, TypeConfiguration typeConfiguration) {
 		super( dialect, typeConfiguration );

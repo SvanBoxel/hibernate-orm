@@ -23,6 +23,30 @@ import org.hibernate.type.BottomType;
 
 import static org.hibernate.query.sqm.internal.TypecheckUtil.areTypesComparable;
 
+/**
+ * Function descriptor for array constructor operations that create arrays
+ * from a list of values.
+ * <p>
+ * This function extends {@link AbstractSqmSelfRenderingFunctionDescriptor} to provide
+ * database-specific array construction capabilities. It handles the creation of
+ * array values from individual elements or expressions.
+ * <p>
+ * Key features:
+ * <ul>
+ *   <li>Constructs arrays from multiple value arguments</li>
+ *   <li>Validates type compatibility between array elements</li>
+ *   <li>Supports both keyword-based and keyword-less syntax</li>
+ *   <li>Handles type resolution for resulting array types</li>
+ * </ul>
+ * <p>
+ * The function ensures that all elements are type-compatible before
+ * constructing the array, following SQL standards for array construction.
+ *
+ * @see AbstractSqmSelfRenderingFunctionDescriptor
+ * @see ArrayFunctions
+ *
+ * @author Hibernate Team
+ */
 public class ArrayConstructorFunction extends AbstractSqmSelfRenderingFunctionDescriptor {
 
 	private final boolean withKeyword;
