@@ -31,6 +31,30 @@ import static org.hibernate.type.SqlTypes.JSON_ARRAY;
 import static org.hibernate.type.SqlTypes.LONG32VARBINARY;
 import static org.hibernate.type.SqlTypes.VARBINARY;
 
+/**
+ * Aggregate column support implementation for H2 Database.
+ * <p>
+ * This class provides H2-specific support for handling aggregate data types
+ * such as JSON, arrays, and structured types. It extends {@link AggregateSupportImpl}
+ * to provide database-specific implementations for aggregate operations.
+ * <p>
+ * H2 aggregate support includes:
+ * <ul>
+ *   <li>JSON column mapping and manipulation</li>
+ *   <li>Array type handling</li>
+ *   <li>Structured data type operations</li>
+ *   <li>Path-based access to nested aggregate elements</li>
+ * </ul>
+ * <p>
+ * The support is version-dependent and requires H2 version 2.2.220 or later
+ * for full aggregate functionality.
+ *
+ * @see AggregateSupport
+ * @see AggregateSupportImpl
+ * @see H2Dialect
+ *
+ * @author Hibernate Team
+ */
 public class H2AggregateSupport extends AggregateSupportImpl {
 
 	private static final AggregateSupport INSTANCE = new H2AggregateSupport();
