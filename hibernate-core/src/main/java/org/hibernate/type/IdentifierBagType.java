@@ -13,6 +13,23 @@ import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.metamodel.CollectionClassification;
 import org.hibernate.persister.collection.CollectionPersister;
 
+/**
+ * A {@link CollectionType} for identifier bags - collections with duplicate elements
+ * where each element has a surrogate identifier, backed by a {@link PersistentIdentifierBag}.
+ * <p>
+ * An identifier bag is similar to a regular bag but each element in the collection
+ * has an associated surrogate identifier (typically a primary key in the collection table).
+ * This allows for more efficient updates and deletes of individual collection elements.
+ * <p>
+ * The persistent collection wrapper {@link PersistentIdentifierBag} provides lazy loading
+ * and dirty checking functionality while maintaining element identifiers.
+ *
+ * @see CollectionType
+ * @see PersistentIdentifierBag
+ * @see BagType
+ *
+ * @author Hibernate Team
+ */
 public class IdentifierBagType extends CollectionType {
 
 	public IdentifierBagType(String role, String propertyRef) {

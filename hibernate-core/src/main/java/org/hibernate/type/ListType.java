@@ -15,6 +15,23 @@ import org.hibernate.persister.collection.CollectionPersister;
 
 import static org.hibernate.metamodel.CollectionClassification.LIST;
 
+/**
+ * A {@link CollectionType} for {@link List} properties, backed by a
+ * {@link PersistentList}.
+ * <p>
+ * This type specializes the generic {@link CollectionType} to handle
+ * {@link java.util.List} collections, providing ordered collection
+ * semantics with indexed access capabilities.
+ * <p>
+ * The persistent collection wrapper {@link PersistentList} maintains
+ * the order of elements and supports indexed operations while providing
+ * lazy loading and dirty checking functionality.
+ *
+ * @see CollectionType
+ * @see PersistentList
+ *
+ * @author Hibernate Team
+ */
 public class ListType extends CollectionType {
 
 	public ListType(String role, String propertyRef) {
