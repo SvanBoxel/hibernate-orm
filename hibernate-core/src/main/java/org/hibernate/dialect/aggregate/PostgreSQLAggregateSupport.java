@@ -43,6 +43,31 @@ import static org.hibernate.type.SqlTypes.TINYINT;
 import static org.hibernate.type.SqlTypes.VARBINARY;
 import static org.hibernate.type.SqlTypes.XML_ARRAY;
 
+/**
+ * Aggregate column support implementation for PostgreSQL database.
+ * <p>
+ * This class provides PostgreSQL-specific support for handling aggregate data types
+ * such as JSON, arrays, structured types, and XML. It extends {@link AggregateSupportImpl}
+ * to provide database-specific implementations for aggregate operations.
+ * <p>
+ * PostgreSQL aggregate support includes:
+ * <ul>
+ *   <li>Native JSON and JSONB column support with rich query capabilities</li>
+ *   <li>Comprehensive array type handling for all PostgreSQL data types</li>
+ *   <li>User-defined structured types (UDTs) and composite types</li>
+ *   <li>XML and XML_ARRAY type support</li>
+ *   <li>Advanced path-based access to nested aggregate elements</li>
+ * </ul>
+ * <p>
+ * PostgreSQL provides the most comprehensive aggregate type support among
+ * relational databases, with extensive native functions and operators.
+ *
+ * @see AggregateSupport
+ * @see AggregateSupportImpl
+ * @see PostgreSQLDialect
+ *
+ * @author Hibernate Team
+ */
 public class PostgreSQLAggregateSupport extends AggregateSupportImpl {
 
 	private static final AggregateSupport INSTANCE = new PostgreSQLAggregateSupport();
