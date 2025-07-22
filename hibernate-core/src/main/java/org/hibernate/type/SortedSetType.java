@@ -13,6 +13,24 @@ import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.metamodel.CollectionClassification;
 import org.hibernate.persister.collection.CollectionPersister;
 
+/**
+ * A {@link CollectionType} for {@link SortedSet} properties, backed by a
+ * {@link PersistentSortedSet}.
+ * <p>
+ * This type specializes the generic {@link CollectionType} to handle
+ * {@link java.util.SortedSet} collections, providing unique element semantics
+ * while maintaining a sorted order based on natural ordering or a
+ * provided {@link Comparator}.
+ * <p>
+ * The persistent collection wrapper {@link PersistentSortedSet} ensures
+ * uniqueness and maintains sort order while providing lazy loading and
+ * dirty checking functionality.
+ *
+ * @see CollectionType
+ * @see PersistentSortedSet
+ *
+ * @author Hibernate Team
+ */
 public class SortedSetType extends SetType {
 
 	private final Comparator<?> comparator;

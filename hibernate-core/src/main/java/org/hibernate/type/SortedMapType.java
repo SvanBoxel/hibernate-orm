@@ -14,6 +14,24 @@ import org.hibernate.metamodel.CollectionClassification;
 import org.hibernate.persister.collection.CollectionPersister;
 
 
+/**
+ * A {@link CollectionType} for {@link SortedMap} properties, backed by a
+ * {@link PersistentSortedMap}.
+ * <p>
+ * This type specializes the generic {@link CollectionType} to handle
+ * {@link java.util.SortedMap} collections, providing key-value pair semantics
+ * while maintaining a sorted order of keys based on natural ordering or a
+ * provided {@link Comparator}.
+ * <p>
+ * The persistent collection wrapper {@link PersistentSortedMap} maintains
+ * the key-value associations in sorted order while providing lazy loading
+ * and dirty checking functionality.
+ *
+ * @see CollectionType
+ * @see PersistentSortedMap
+ *
+ * @author Hibernate Team
+ */
 public class SortedMapType extends MapType {
 
 	private final Comparator<?> comparator;

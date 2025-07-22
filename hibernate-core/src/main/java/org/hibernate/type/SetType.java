@@ -11,6 +11,23 @@ import org.hibernate.internal.util.collections.CollectionHelper;
 import org.hibernate.metamodel.CollectionClassification;
 import org.hibernate.persister.collection.CollectionPersister;
 
+/**
+ * A {@link CollectionType} for {@link java.util.Set} properties, backed by a
+ * {@link PersistentSet}.
+ * <p>
+ * This type specializes the generic {@link CollectionType} to handle
+ * {@link java.util.Set} collections, providing unique element semantics
+ * without maintaining insertion order.
+ * <p>
+ * The persistent collection wrapper {@link PersistentSet} ensures
+ * uniqueness of elements while providing lazy loading and dirty
+ * checking functionality.
+ *
+ * @see CollectionType
+ * @see PersistentSet
+ *
+ * @author Hibernate Team
+ */
 public class SetType extends CollectionType {
 
 	public SetType(String role, String propertyRef) {

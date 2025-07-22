@@ -14,6 +14,22 @@ import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.metamodel.CollectionClassification;
 import org.hibernate.persister.collection.CollectionPersister;
 
+/**
+ * A {@link CollectionType} for "bag" collections (non-unique, unordered), backed by a
+ * {@link PersistentBag}.
+ * <p>
+ * A bag is a collection that allows duplicate elements and has no inherent ordering.
+ * This is essentially a {@link java.util.Collection} that maps to a database table
+ * without unique constraints on the collection elements.
+ * <p>
+ * The persistent collection wrapper {@link PersistentBag} provides lazy loading
+ * and dirty checking functionality while allowing duplicate elements.
+ *
+ * @see CollectionType
+ * @see PersistentBag
+ *
+ * @author Hibernate Team
+ */
 public class BagType extends CollectionType {
 
 	public BagType(String role, String propertyRef) {

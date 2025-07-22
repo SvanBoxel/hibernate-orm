@@ -47,6 +47,30 @@ import static org.hibernate.type.SqlTypes.UUID;
 import static org.hibernate.type.SqlTypes.VARBINARY;
 import static org.hibernate.type.SqlTypes.VARCHAR;
 
+/**
+ * Aggregate column support implementation for MySQL and MariaDB databases.
+ * <p>
+ * This class provides MySQL/MariaDB-specific support for handling aggregate data types
+ * such as JSON and structured types. It extends {@link AggregateSupportImpl}
+ * to provide database-specific implementations for aggregate operations.
+ * <p>
+ * MySQL aggregate support includes:
+ * <ul>
+ *   <li>JSON column mapping and manipulation using MySQL's native JSON functions</li>
+ *   <li>LONGTEXT-based aggregate storage for versions without JSON support</li>
+ *   <li>UUID handling within aggregates</li>
+ *   <li>Path-based access to nested aggregate elements</li>
+ * </ul>
+ * <p>
+ * The implementation supports different storage strategies based on MySQL version
+ * and features: native JSON columns for MySQL 5.7+ or LONGTEXT for older versions.
+ *
+ * @see AggregateSupport
+ * @see AggregateSupportImpl
+ * @see MySQLDialect
+ *
+ * @author Hibernate Team
+ */
 public class MySQLAggregateSupport extends AggregateSupportImpl {
 
 	private static final AggregateSupport JSON_INSTANCE = new MySQLAggregateSupport( true, false );

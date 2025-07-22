@@ -16,6 +16,23 @@ import org.hibernate.metamodel.CollectionClassification;
 import org.hibernate.persister.collection.CollectionPersister;
 
 
+/**
+ * A {@link CollectionType} for {@link Map} properties, backed by a
+ * {@link PersistentMap}.
+ * <p>
+ * This type specializes the generic {@link CollectionType} to handle
+ * {@link java.util.Map} collections, providing key-value pair semantics
+ * for mapping relationships.
+ * <p>
+ * The persistent collection wrapper {@link PersistentMap} maintains
+ * the key-value associations while providing lazy loading and dirty
+ * checking functionality.
+ *
+ * @see CollectionType
+ * @see PersistentMap
+ *
+ * @author Hibernate Team
+ */
 public class MapType extends CollectionType {
 
 	public MapType(String role, String propertyRef) {

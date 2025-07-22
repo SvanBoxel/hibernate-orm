@@ -11,6 +11,24 @@ import org.hibernate.boot.model.relational.QualifiedTypeName;
 import org.hibernate.boot.model.relational.SqlStringGenerationContext;
 import org.hibernate.dialect.Dialect;
 
+/**
+ * Abstract base implementation of {@link UserDefinedType} that provides
+ * common functionality for user-defined database types.
+ * <p>
+ * This class handles the standard naming and qualification operations
+ * for user-defined types, managing catalog, schema, and type name
+ * identifiers with proper quoting support.
+ * <p>
+ * User-defined types represent custom database types (like UDTs in SQL)
+ * that extend beyond the standard SQL types, allowing for complex
+ * structured data types to be mapped into the relational model.
+ *
+ * @see UserDefinedType
+ * @see Identifier
+ * @see Namespace
+ *
+ * @author Hibernate Team
+ */
 public class AbstractUserDefinedType implements UserDefinedType {
 
 	private final String contributor;

@@ -8,6 +8,31 @@ import java.sql.Types;
 
 import org.hibernate.MappingException;
 
+/**
+ * Identity column support implementation for CockroachDB.
+ * <p>
+ * This class provides CockroachDB-specific support for identity/auto-increment
+ * columns. It extends {@link IdentityColumnSupportImpl} to handle CockroachDB's
+ * unique serial column implementation.
+ * <p>
+ * CockroachDB identity column characteristics:
+ * <ul>
+ *   <li>Supports SERIAL2, SERIAL4, and SERIAL8 column types</li>
+ *   <li>Uses unique_rowid() function for value generation by default</li>
+ *   <li>Full support requires sql.defaults.serial_normalization=sql_sequence setting</li>
+ *   <li>SERIAL4 support is not enabled by default in all versions</li>
+ * </ul>
+ * <p>
+ * <strong>Note:</strong> This implementation currently returns {@code false}
+ * for {@link #supportsIdentityColumns()} due to configuration requirements
+ * and version-dependent limitations.
+ *
+ * @see IdentityColumnSupport
+ * @see IdentityColumnSupportImpl
+ * @see CockroachDBDialect
+ *
+ * @author Hibernate Team
+ */
 public class CockroachDBIdentityColumnSupport extends IdentityColumnSupportImpl {
 
 	public static final CockroachDBIdentityColumnSupport INSTANCE = new CockroachDBIdentityColumnSupport();

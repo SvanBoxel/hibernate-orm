@@ -15,6 +15,31 @@ import org.hibernate.metamodel.mapping.SelectableMapping;
 import org.hibernate.sql.ast.tree.expression.ColumnReference;
 import org.hibernate.sql.model.ast.builder.ColumnValueBindingBuilder;
 
+/**
+ * A specialized list implementation that manages {@link ColumnValueBinding} instances
+ * for SQL mutation operations (INSERT, UPDATE, DELETE).
+ * <p>
+ * This class extends {@link ArrayList} to provide specific functionality for
+ * collecting and managing column-value bindings in the context of SQL mutation
+ * statements. It implements {@link ModelPart.JdbcValueConsumer} to facilitate
+ * the consumption of values during the binding process.
+ * <p>
+ * The binding list is responsible for:
+ * <ul>
+ *   <li>Collecting column bindings for mutation operations</li>
+ *   <li>Managing parameter bindings for prepared statements</li>
+ *   <li>Handling null restrictions and custom write expressions</li>
+ *   <li>Providing utilities for checking column presence</li>
+ * </ul>
+ * <p>
+ * This is an internal API used by Hibernate's SQL generation infrastructure.
+ *
+ * @see ColumnValueBinding
+ * @see MutatingTableReference
+ * @see ColumnValueParameterList
+ *
+ * @author Hibernate Team
+ */
 @Internal
 public class ColumnValueBindingList extends ArrayList<ColumnValueBinding> implements ModelPart.JdbcValueConsumer {
 

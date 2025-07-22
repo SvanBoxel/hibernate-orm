@@ -34,6 +34,30 @@ import static org.hibernate.type.SqlTypes.SMALLINT;
 import static org.hibernate.type.SqlTypes.TINYINT;
 import static org.hibernate.type.SqlTypes.VARBINARY;
 
+/**
+ * Aggregate column support implementation for CockroachDB.
+ * <p>
+ * This class provides CockroachDB-specific support for handling aggregate data types
+ * such as JSON, arrays, and structured types. It extends {@link AggregateSupportImpl}
+ * to provide database-specific implementations for aggregate operations.
+ * <p>
+ * CockroachDB aggregate support includes:
+ * <ul>
+ *   <li>JSON column mapping and manipulation using CockroachDB's native JSON features</li>
+ *   <li>Array type handling with PostgreSQL-compatible syntax</li>
+ *   <li>Structured data type operations</li>
+ *   <li>Path-based access to nested aggregate elements</li>
+ * </ul>
+ * <p>
+ * CockroachDB provides comprehensive aggregate support as it implements many
+ * PostgreSQL-compatible features for handling complex data types.
+ *
+ * @see AggregateSupport
+ * @see AggregateSupportImpl
+ * @see CockroachDBDialect
+ *
+ * @author Hibernate Team
+ */
 public class CockroachDBAggregateSupport extends AggregateSupportImpl {
 
 	private static final AggregateSupport INSTANCE = new CockroachDBAggregateSupport();

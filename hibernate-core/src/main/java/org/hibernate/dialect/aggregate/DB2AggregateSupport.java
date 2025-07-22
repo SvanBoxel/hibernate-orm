@@ -55,6 +55,30 @@ import static org.hibernate.type.SqlTypes.UUID;
 import static org.hibernate.type.SqlTypes.VARBINARY;
 import static org.hibernate.type.SqlTypes.XML_ARRAY;
 
+/**
+ * Aggregate column support implementation for IBM DB2 database.
+ * <p>
+ * This class provides DB2-specific support for handling aggregate data types
+ * such as JSON and structured types. It extends {@link AggregateSupportImpl}
+ * to provide database-specific implementations for aggregate operations.
+ * <p>
+ * DB2 aggregate support includes:
+ * <ul>
+ *   <li>JSON column mapping and manipulation using DB2's JSON functions</li>
+ *   <li>Structured data type operations</li>
+ *   <li>Path-based access to nested aggregate elements</li>
+ *   <li>Support for both traditional and modern DB2 versions</li>
+ * </ul>
+ * <p>
+ * The implementation can be configured for different DB2 capabilities
+ * depending on version and feature availability.
+ *
+ * @see AggregateSupport
+ * @see AggregateSupportImpl
+ * @see DB2Dialect
+ *
+ * @author Hibernate Team
+ */
 public class DB2AggregateSupport extends AggregateSupportImpl {
 
 	public static final AggregateSupport INSTANCE = new DB2AggregateSupport( false );
